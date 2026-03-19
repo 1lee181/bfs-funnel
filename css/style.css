@@ -1,0 +1,341 @@
+/* style.css
+ * Author: Aleesha Abdullah
+ * Description: Mobile-first styles for Pathfinding Visualizer
+ * Date: March 18, 2026 */
+
+:root {
+    --bg:         #0f1117;
+    --surface:    #1a1d2e;
+    --border:     #2e3250;
+    --accent:     #4f8ef7;
+    --accent2:    #a78bfa;
+    --text:       #e8eaf6;
+    --text-muted: #7b82a8;
+    --start:      #22c55e;
+    --end:        #ef4444;
+    --wall:       #374151;
+    --visited:    #fbbf24;
+    --path:       #38bdf8;
+    --btn-radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Screens */
+#splash-screen,
+#game-screen,
+#end-screen {
+    width: 100%;
+    max-width: 480px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.hidden { display: none !important; }
+
+/* Splash */
+#splash-screen {
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#splash-canvas {
+    width: 100%;
+    max-width: 440px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+}
+
+#splash-title {
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#splash-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+/* Game */
+#game-screen {
+    padding-top: 20px;
+}
+
+#game-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+}
+
+.wall-display {
+    color: var(--accent2);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+}
+
+.wall-display.wall-maxed {
+    color: var(--end);  /* Red when budget is exhausted */
+}
+
+#target-score {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.73rem;
+    padding: 3px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+}
+
+.stat-value {
+    color: var(--text);
+    font-weight: bold;
+    letter-spacing: 0.04em;
+}
+
+#game-canvas {
+    width: 100%;
+    max-width: 440px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    touch-action: none;
+}
+
+#phase-indicator {
+    font-size: 0.78rem;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+/* Controls */
+#controls {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+}
+
+/* Result panel */
+#result-screen {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#result-screen h2 {
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+#round-score {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--text);
+}
+
+#round-detail {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    padding-top: 4px;
+}
+
+/* Help panel */
+#help-panel {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+#help-panel h3 {
+    color: var(--accent2);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+#help-panel .help-intro {
+    color: var(--text);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    border-left: 2px solid var(--accent2);
+    padding-left: 8px;
+}
+
+#help-panel .help-tip {
+    margin-top: 10px;
+    color: var(--accent);
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+#help-panel ol {
+    padding-left: 16px;
+}
+
+#help-panel li {
+    margin-bottom: 4px;
+}
+
+/* End screen */
+#end-screen {
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#end-screen h2 {
+    font-size: 1.3rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+
+#total-score {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--text);
+    line-height: 1;
+}
+
+#score-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+#personal-best {
+    font-size: 0.8rem;
+    color: var(--accent2);
+}
+
+#round-history {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+/* Buttons */
+button {
+    flex: 1;
+    padding: 12px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--btn-radius);
+    background: var(--surface);
+    color: var(--text);
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+button:hover {
+    background: var(--border);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+button.primary:hover {
+    background: #3a7de8;
+    border-color: #3a7de8;
+    color: #fff;
+}
+
+button#start-button,
+button#play-again-button,
+button#next-round-button {
+    flex: unset;
+    width: 100%;
+    max-width: 280px;
+}
+
+/* Score bar */
+#score-bar-container {
+    width: 100%;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+#score-bar {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.6s ease;
+    width: 0%;
+}
