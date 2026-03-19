@@ -1,4 +1,4 @@
-# Pathfinding Visualizer
+# BFS Funnel (Pathfinding Visualizer)
 
 A browser-based puzzle game that teaches Breadth-First Search by making you compete against it.
 
